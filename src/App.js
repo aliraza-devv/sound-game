@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import logo from './images/logo.png';
+import Home from "./Components/Home/Home";
+import GameLevel1 from './Components/GameLevels/GameLevel1'
+import GameLevel2 from './Components/GameLevels/GameLevel2'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <img src={logo} alt="LOGO" width={60} height={40} />
+      <div className="App"> 
+        <header className="App-header">
+          <Routes>
+            <Route exact path="/" element={<Home/>} />
+            <Route exact path="/gamelevel1" element={<GameLevel1/>} />
+            <Route exact path="/gamelevel2" element={<GameLevel2 />} />
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
