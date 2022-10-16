@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import logo from './images/logo.png';
+import logo from './images/logo.svg';
 import Home from "./Components/Home/Home";
 import GameLevel1 from './Components/GameLevels/GameLevel1'
 import GameLevel2 from './Components/GameLevels/GameLevel2'
