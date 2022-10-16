@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Howl } from "howler";
+
 
 import one from "../../images/one.png";
 import two from "../../images/two.png";
@@ -23,19 +25,28 @@ const iconClips = [
 
 function GameLevel1() {
   const [disable, setDisable] = useState(true);
+  const [click, setClick] = useState(1);
+  let navigate = useNavigate(); 
+  let path = '/GameLevel2'; 
+  let path_2 = '/'; 
 
-  // const btnOne = document.getElementById('one')
-  // const btnTwo = document.getElementById('two')
-  // const btnThree = document.getElementById('three')
-  // let btnFour = document.getElementById('four')
-  // const btnFive = document.getElementById('five')
+  const routeChange = (e) =>{ 
+    navigate(e);
+  }
+  const gameOverRoute = (e) =>{
+    navigate(e);
+  }
+  const imgClicked = () => {
+    setClick(click + 1)
+    if(click >= 2){
+      gameOverRoute(path_2)
+    }
+  }
   
   const enableBtn = (event) => {
     let clickedBtn = event.target.id
     if(clickedBtn === 'five'){
       setDisable(false)
-    }else if(clickedBtn !== 'five'){
-      console.log('not clicked');
     }
   }
 
@@ -49,6 +60,7 @@ function GameLevel1() {
 
   return (
     <div className="main">
+      <h1 className="heading-primary">Game Level 1</h1>
       <div className="container">
         <div className="icons">
           {iconClips.map((soundObj, index) => {
@@ -60,6 +72,7 @@ function GameLevel1() {
                 height={50}
                 src={soundObj.lablel}
                 alt="Counting Icon"
+                onClick={imgClicked}
               />
             );
           })}
@@ -74,7 +87,7 @@ function GameLevel1() {
             disabled={disable}
             onClick={(e) => {
               callMySound(twoAudio);
-              enableBtn(e)
+              enableBtn(e);
             }}
           >
             2
@@ -88,7 +101,7 @@ function GameLevel1() {
             disabled={disable}
             onClick={(e) => {
               callMySound(oneAudio);
-              enableBtn(e)
+              enableBtn(e);
             }}
           >
             1
@@ -102,7 +115,7 @@ function GameLevel1() {
             disabled={disable}
             onClick={(e) => {
               callMySound(fourAudio);
-              enableBtn(e)
+              enableBtn(e);
             }}
           >
             4
@@ -116,7 +129,8 @@ function GameLevel1() {
             disabled={disable}
             onClick={(e) => {
               callMySound(threeAudio);
-              enableBtn(e)
+              enableBtn(e);
+              routeChange(path);;
             }}
           >
             3
@@ -129,7 +143,7 @@ function GameLevel1() {
             alt=" number icon"
             onClick={(e) => {
               callMySound(fiveAudio);
-              enableBtn(e)
+              enableBtn(e);
             }}
           >
             5

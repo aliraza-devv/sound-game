@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import { Howl } from "howler";
 
 import one from "../../images/one.png";
@@ -36,34 +37,30 @@ const iconClips = [
   { sound: nineAudio, lablel: nine, },
 ];
 
-const numClips = [
-  { sound: twoAudio, lablel: "2", value: 2 },
-  { sound: oneAudio, lablel: "1", value: 1 },
-  { sound: fourAudio, lablel: "4", value: 4 },
-  { sound: threeAudio, lablel: "3", value: 3 },
-  { sound: fiveAudio, lablel: "5", value: 5 },
-  { sound: fiveAudio, lablel: "6", value: 7 },
-  { sound: fiveAudio, lablel: "8", value: 5 },
-  { sound: fiveAudio, lablel: "7", value: 10 },
-  { sound: fiveAudio, lablel: "10", value: 5 },
-  { sound: fiveAudio, lablel: "9", value: 5 },
-];
-
-function GameLevel1() {
+function GameLevel2() {
   const [disable, setDisable] = useState(true);
+  const [click, setClick] = useState(1);
+  let navigate = useNavigate(); 
 
-  // const btnOne = document.getElementById('one')
-  // const btnTwo = document.getElementById('two')
-  // const btnThree = document.getElementById('three')
-  // let btnFour = document.getElementById('four')
-  // const btnFive = document.getElementById('five')
+  let path = '/'; 
+
+  const routeChange = (e) =>{ 
+    navigate(e);
+  }
+  const gameOverRoute = (e) =>{
+    navigate(e);
+  }
+  const imgClicked = () => {
+    setClick(click + 1)
+    if(click === 2){
+      gameOverRoute(path)
+    }
+  }
   
   const enableBtn = (event) => {
     let clickedBtn = event.target.id
     if(clickedBtn === 'five'){
       setDisable(false)
-    }else if(clickedBtn !== 'five'){
-      console.log('not clicked');
     }
   }
 
@@ -77,6 +74,7 @@ function GameLevel1() {
 
   return (
     <div className="main">
+        <h1 className="heading-primary">Game Level 2</h1>
       <div className="container">
         <div className="icons">
           {iconClips.map((soundObj, index) => {
@@ -88,6 +86,7 @@ function GameLevel1() {
                 height={50}
                 src={soundObj.lablel}
                 alt="Counting Icon"
+                onClick={imgClicked}
               />
             );
           })}
@@ -168,6 +167,7 @@ function GameLevel1() {
             width={50}
             height={50}
             alt=" number icon"
+            disabled={disable}
             onClick={(e) => {
               callMySound(sevenAudio);
               enableBtn(e)
@@ -181,6 +181,7 @@ function GameLevel1() {
             width={50}
             height={50}
             alt=" number icon"
+            disabled={disable}
             onClick={(e) => {
               callMySound(sixAudio);
               enableBtn(e)
@@ -194,9 +195,11 @@ function GameLevel1() {
             width={50}
             height={50}
             alt=" number icon"
+            disabled={disable}
             onClick={(e) => {
               callMySound(nineAudio);
               enableBtn(e)
+              routeChange(path);
             }}
           >
             9
@@ -207,6 +210,7 @@ function GameLevel1() {
             width={50}
             height={50}
             alt=" number icon"
+            disabled={disable}
             onClick={(e) => {
               callMySound(eightAudio);
               enableBtn(e)
@@ -220,6 +224,7 @@ function GameLevel1() {
             width={50}
             height={50}
             alt=" number icon"
+            disabled={disable}
             onClick={(e) => {
               callMySound(tenAudio);
               enableBtn(e)
@@ -233,4 +238,4 @@ function GameLevel1() {
   );
 }
 
-export default GameLevel1;
+export default GameLevel2;
