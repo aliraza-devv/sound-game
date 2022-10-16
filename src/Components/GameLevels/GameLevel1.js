@@ -27,15 +27,15 @@ function GameLevel1() {
   // const btnOne = document.getElementById('one')
   // const btnTwo = document.getElementById('two')
   // const btnThree = document.getElementById('three')
+  // let btnFour = document.getElementById('four')
   // const btnFive = document.getElementById('five')
   
   const enableBtn = (event) => {
-    let btnFour = document.getElementById('four')
     let clickedBtn = event.target.id
     if(clickedBtn === 'five'){
       setDisable(false)
     }else if(clickedBtn !== 'five'){
-      console.log('not clicked')
+      console.log('not clicked');
     }
   }
 
@@ -72,8 +72,9 @@ function GameLevel1() {
             height={50}
             alt=" number icon"
             disabled={disable}
-            onClick={() => {
+            onClick={(e) => {
               callMySound(twoAudio);
+              enableBtn(e)
             }}
           >
             2
@@ -85,8 +86,9 @@ function GameLevel1() {
             height={50}
             alt=" number icon"
             disabled={disable}
-            onClick={() => {
+            onClick={(e) => {
               callMySound(oneAudio);
+              enableBtn(e)
             }}
           >
             1
@@ -98,8 +100,9 @@ function GameLevel1() {
             height={50}
             alt=" number icon"
             disabled={disable}
-            onClick={() => {
+            onClick={(e) => {
               callMySound(fourAudio);
+              enableBtn(e)
             }}
           >
             4
@@ -111,8 +114,9 @@ function GameLevel1() {
             height={50}
             alt=" number icon"
             disabled={disable}
-            onClick={() => {
+            onClick={(e) => {
               callMySound(threeAudio);
+              enableBtn(e)
             }}
           >
             3
