@@ -31,6 +31,17 @@ body{
   font-weight: 800;
   text-transform: uppercase;
 }
+.heading-secondary{
+  color: azure;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: -.7rem;
+}
+
+.heading-sub{
+  margin-bottom: -.5rem;
+}
 
 /* Button */
 .btn-primary{
@@ -56,7 +67,9 @@ body{
 }
 
 /* Game level 1 */
-
+.main{
+  text-align: left;
+}
 .container{
   width: 100%;
   display: flex;
