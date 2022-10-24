@@ -8,9 +8,9 @@ import GameLevel2 from './Components/GameLevels/GameLevel2'
 function App() {
   return (
     <Router>
-      <img src={logo} alt="LOGO" width={60} height={40} />
       <div className="App"> 
         <header className="App-header">
+        <img src={logo} alt="LOGO" width={60} height={40} />
           <Routes>
             <Route exact path="/" element={<Home/>} />
             <Route exact path="/gamelevel1" element={<GameLevel1/>} />
